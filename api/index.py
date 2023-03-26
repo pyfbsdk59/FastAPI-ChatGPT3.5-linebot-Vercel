@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-
-import logging, uvicorn
 from fastapi import FastAPI, Request, HTTPException
 
 from linebot import LineBotApi, WebhookHandler
@@ -59,11 +56,16 @@ chatgpt = ChatGPT()
 
 app = FastAPI()
 # Line Bot config
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
 
-@app.get("/") # 指定 api 路徑 (get方法)
-async def hello():
-	return "Hello World"
 
+@app.get("/hello/{name}")
+async def say_hello(name: str):
+    return {"message": f"Hello {name}"}
+
+'''
 @app.post("/callback")
 async def callback(request: Request):
     signature = request.headers["X-Line-Signature"]
@@ -87,5 +89,6 @@ def handling_message(event):
         reply_msg = chatgpt.get_response(user_message)
         
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_msg))
+        '''
 
 
