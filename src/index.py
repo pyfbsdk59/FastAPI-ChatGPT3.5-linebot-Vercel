@@ -1,3 +1,4 @@
+'''
 from fastapi import FastAPI
 
 
@@ -28,7 +29,7 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
 
 
-
+app = FastAPI()
 ################################################################
 import openai, os
 	
@@ -74,7 +75,7 @@ class ChatGPT:
 
 chatgpt = ChatGPT()
 
-app = FastAPI()
+
 # Line Bot config
 @app.get("/")
 async def root():
@@ -109,6 +110,6 @@ def handling_message(event):
         reply_msg = chatgpt.get_response(user_message)
         
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_msg))
-        '''
+
 
 
