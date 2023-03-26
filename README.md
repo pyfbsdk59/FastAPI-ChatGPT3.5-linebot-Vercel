@@ -71,3 +71,6 @@ https://www.youtube.com/watch?v=eKKEa6NhCd0
 
 ------
 ### Line和openai api設置請參考： https://github.com/howarder3/GPT-Linebot-python-flask-on-vercel
+
+
+### FastAPI Vercel設置請參考： https://github.com/hebertcisco/deploy-python-fastapi-in-vercel
